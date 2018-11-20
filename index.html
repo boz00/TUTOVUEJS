@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <title>My first Vue app</title>
+  <!-- <script src="https://unpkg.com/vue"></script> -->
+  <script src="./dist/bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Hello {{name}}</h2>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="name">Enter your name:</label>
+                <!-- binded input to 'name' -->
+                <input v-model="name" type="text" class="form-control" id="namee" placeholder="Name">
+            </div>
+        </form>
+        <textarea v-model="message"></textarea>
+        <button v-show="message"> 
+        Send word to allies for help!
+        </button>
+        <!-- displays all data within Vue instance filtered through JSON -->
+
+
+        <template v-if="!message">
+             <h1>You must send a message for help!</h1>
+             <p>Dispatch a messenger immediately!</p>
+             <p>To nearby kingdom of Hearts!</p>
+        </template>
+             <textarea v-model="message"></textarea>
+             <button v-show="message">
+             Send word to allies for help!
+             </button>
+
+             <div v-if="gender === 'male' || gender === 'female'">
+                <h1>Hello,
+                    <!-- render span if 'gender' equals to 'male' -->
+                    <span v-show="gender === 'male'">Mister {{name}}.</span>
+                    <!-- render span if 'gender' equals to 'female' -->
+                    <span v-if="gender === 'female'">Miss {{name}}.</span>
+                </h1>
+            </div>
+            <!-- v-else immediately follows v-if block to work -->
+            <h1 v-else>So you can't decide. Fine!</h1>
+            <!-- show inputs -->
+            <label for="gender">Enter your gender:</label>
+            <input v-model="gender" class="form-control" id="gender">
+            <label for="name">Enter your name:</label>
+            <input v-model="name" class="form-control" id="name">
+
+
+
+        <pre>{{ $data }}</pre>
+    </div>
+  <script>
+    var app = new Vue({
+        el: '.container',
+        data: {
+            //empty variable each binded to input
+            name: 'toto',
+            message: '',
+            gender:'female'
+        },
+    })
+  </script>
+</body>
+</html>
